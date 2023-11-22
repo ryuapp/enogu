@@ -14,7 +14,7 @@ await build({
   package: {
     name: "enogu",
     version: Deno.args[0],
-    description: "Colorful terminal text for Deno",
+    description: "Painting your terminal with colors",
     license: "MIT",
     repository: {
       type: "git",
