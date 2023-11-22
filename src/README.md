@@ -1,7 +1,6 @@
 # enogu
 
-**enogu** is a library for painting your terminal with colors.
-
+**enogu** is a library for painting your terminal with colors.\
 Simple, fast, and easy to use.
 
 ## Usage
