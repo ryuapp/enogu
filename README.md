@@ -6,7 +6,7 @@ Simple, fast, and easy to use.
 ## Usage
 
 ```ts
-import * as enogu from "https://deno.land/x/enogu@0.1.0/mod.ts";
+import * as enogu from "https://deno.land/x/enogu@0.1.1/mod.ts";
 
 console.log(enogu.red("Hello, world!"));
 ```
