@@ -10,8 +10,9 @@ const noColor = typeof Deno?.noColor === "boolean"
  * @param close
  */
 function init(open: number, close: number) {
-  return (str: string) =>
-    noColor ? str : "\x1b[" + open + "m" + str + "\x1b[" + close + "m";
+  return function (str: string) {
+    return noColor ? str : "\x1b[" + open + "m" + str + "\x1b[" + close + "m";
+  };
 }
 
 /**

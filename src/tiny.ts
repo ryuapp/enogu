@@ -5,8 +5,9 @@ const noColor = typeof Deno?.noColor === "boolean"
   : false;
 
 function init(open: number, close: number) {
-  return (str: string) =>
-    noColor ? str : "\x1b[" + open + "m" + str + "\x1b[" + close + "m";
+  return function (str: string) {
+    return noColor ? str : "\x1b[" + open + "m" + str + "\x1b[" + close + "m";
+  };
 }
 
 export const reset = init(0, 0);
