@@ -8,7 +8,7 @@ let out;
 
 Deno.bench({
   name: "deno/std",
-  fn: function () {
+  fn: () => {
     out = colors.inverse(colors.bold("Deno")) + " is a " +
       colors.yellow("JavaScript") + ", " +
       colors.blue("TypeScript") + ", and " +
@@ -17,7 +17,7 @@ Deno.bench({
 });
 Deno.bench({
   name: "chalk",
-  fn: function () {
+  fn: () => {
     out = chalk.inverse(chalk.bold("Deno")) + " is a " +
       chalk.yellow("JavaScript") + ", " +
       chalk.blue("TypeScript") + ", and " +
@@ -26,7 +26,7 @@ Deno.bench({
 });
 Deno.bench({
   name: "picocolors",
-  fn: function () {
+  fn: () => {
     out = pico.inverse(pico.bold("Deno")) + " is a " +
       pico.yellow("JavaScript") + ", " +
       pico.blue("TypeScript") + ", and " +
@@ -35,7 +35,7 @@ Deno.bench({
 });
 Deno.bench({
   name: "enogu",
-  fn: function () {
+  fn: () => {
     out = enogu.inverse(enogu.bold("Deno")) + " is a " +
       enogu.yellow("JavaScript") + ", " +
       enogu.blue("TypeScript") + ", and " +
