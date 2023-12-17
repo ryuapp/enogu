@@ -8,7 +8,7 @@ let out;
 
 Deno.bench({
   name: "deno/std",
-  fn: () =>{
+  fn: () => {
     out = colors.red(
       "Deno is a JavaScript, TypeScript, and WebAssembly runtime.",
     );
@@ -24,7 +24,7 @@ Deno.bench({
 });
 Deno.bench({
   name: "picocolors",
-  fn:() => {
+  fn: () => {
     out = pico.red(
       "Deno is a JavaScript, TypeScript, and WebAssembly runtime.",
     );
@@ -32,7 +32,7 @@ Deno.bench({
 });
 Deno.bench({
   name: "enogu",
-  fn: () =>{
+  fn: () => {
     out = enogu.red(
       "Deno is a JavaScript, TypeScript, and WebAssembly runtime.",
     );
