@@ -186,3 +186,12 @@ Deno.test("complex color", () => {
     "[44m[31menogu is colors[39m[49m",
   );
 });
+
+Deno.test("setColorEnabled", () => {
+  c.setColorEnabled(false);
+  assertEquals(c.getColorEnabled(), false);
+  assertEquals(c.red("enogu is colors"), "enogu is colors");
+  c.setColorEnabled(true);
+  assertEquals(c.getColorEnabled(), true);
+  assertEquals(c.red("enogu is colors"), "[31menogu is colors[39m");
+});

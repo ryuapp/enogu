@@ -4,6 +4,25 @@ const noColor = typeof Deno?.noColor === "boolean"
   ? Deno.noColor as boolean
   : false;
 
+let enabled = !noColor;
+
+/**
+ * Set coloring to enabled or disabled
+ * @param value
+ */
+export function setColorEnabled(value: boolean) {
+  if (Deno?.noColor) {
+    return;
+  }
+
+  enabled = value;
+}
+
+/** Get whether coloring is enabled or disabled */
+export function getColorEnabled(): boolean {
+  return enabled;
+}
+
 /**
  * Initialization of color function
  * @param open
@@ -11,7 +30,7 @@ const noColor = typeof Deno?.noColor === "boolean"
  */
 function init(open: number, close: number) {
   return function (str: string) {
-    return noColor ? str : "\x1b[" + open + "m" + str + "\x1b[" + close + "m";
+    return enabled ? "\x1b[" + open + "m" + str + "\x1b[" + close + "m" : str;
   };
 }
 
