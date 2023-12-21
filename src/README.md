@@ -6,18 +6,17 @@ Simple, fast, and easy to use.
 ## Usage
 
 ```ts
-import { red } from "https://deno.land/x/enogu@0.1.1/mod.ts";
+import { red } from "https://deno.land/x/enogu@0.1.1/colors.ts";
 
 console.log(red("Hello, world!"));
 ```
 
 ## Modules
 
-| name      | description                            |
-| --------- | -------------------------------------- |
-| mod.ts    | (Recommend) Everythings about `enogu`. |
-| colors.ts | Colors and decorations.                |
-| tiny.ts   | Essential colors and decorations.      |
+| name      | description                         |
+| --------- | ----------------------------------- |
+| colors.ts | (Recommend) Colors and decorations. |
+| tiny.ts   | Essential colors and decorations.   |
 
 ## Benchmarks
 
