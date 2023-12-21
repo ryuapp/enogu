@@ -195,3 +195,62 @@ Deno.test("setColorEnabled", () => {
   assertEquals(c.getColorEnabled(), true);
   assertEquals(c.red("enogu is colors"), "[31menogu is colors[39m");
 });
+
+// From here onwards, we have modified the fork from https://deno.land/std@0.209.0/fmt/colors_test.ts.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+
+Deno.test("clamp using rgb8", function () {
+  assertEquals(c.rgb8("foo bar", -10), "[38;5;0mfoo bar[39m");
+});
+
+Deno.test("truncate using rgb8", function () {
+  assertEquals(c.rgb8("foo bar", 42.5), "[38;5;42mfoo bar[39m");
+});
+
+Deno.test("rgb8", function () {
+  assertEquals(c.rgb8("foo bar", 42), "[38;5;42mfoo bar[39m");
+});
+
+Deno.test("bgRgb8", function () {
+  assertEquals(c.bgRgb8("foo bar", 42), "[48;5;42mfoo bar[49m");
+});
+
+Deno.test("rgb24", function () {
+  assertEquals(
+    c.rgb24("foo bar", {
+      r: 41,
+      g: 42,
+      b: 43,
+    }),
+    "[38;2;41;42;43mfoo bar[39m",
+  );
+});
+
+Deno.test("rgb24 number", function () {
+  assertEquals(c.rgb24("foo bar", 0x070809), "[38;2;7;8;9mfoo bar[39m");
+});
+
+Deno.test("bgRgb24", function () {
+  assertEquals(
+    c.bgRgb24("foo bar", {
+      r: 41,
+      g: 42,
+      b: 43,
+    }),
+    "[48;2;41;42;43mfoo bar[49m",
+  );
+});
+
+Deno.test("bgRgb24 number", function () {
+  assertEquals(c.bgRgb24("foo bar", 0x070809), "[48;2;7;8;9mfoo bar[49m");
+});
+
+// https://github.com/chalk/strip-ansi/blob/2b8c961e75760059699373f9a69101065c3ded3a/test.js#L4-L6
+Deno.test("stripAnsiCode", function () {
+  assertEquals(
+    c.stripAnsiCode(
+      "\u001B[0m\u001B[4m\u001B[42m\u001B[31mfoo\u001B[39m\u001B[49m\u001B[24mfoo\u001B[0m",
+    ),
+    "foofoo",
+  );
+});
