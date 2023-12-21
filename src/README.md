@@ -6,7 +6,7 @@ Simple, fast, and easy to use.
 ## Usage
 
 ```ts
-import { red } from "https://deno.land/x/enogu@0.1.1/colors.ts";
+import { red } from "https://deno.land/x/enogu@0.2.0/colors.ts";
 
 console.log(red("Hello, world!"));
 ```
