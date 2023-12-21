@@ -6,6 +6,12 @@ const noColor = typeof Deno?.noColor === "boolean"
 
 let enabled = !noColor;
 
+interface Rgb {
+  r: number;
+  g: number;
+  b: number;
+}
+
 /**
  * Set coloring to enabled or disabled
  * @param value
@@ -290,3 +296,129 @@ export const bgBrightCyan = init(106, 49);
  * @param str background to bright white
  */
 export const bgBrightWhite = init(107, 49);
+
+// From here onwards, we have modified the fork from https://deno.land/std@0.209.0/fmt/colors.ts.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+
+/**
+ * Clam and truncate color codes
+ * @param n
+ * @param max number to truncate to
+ * @param min number to truncate from
+ */
+function clampAndTruncate(n: number, max = 255, min = 0): number {
+  return Math.trunc(Math.max(Math.min(n, max), min));
+}
+
+/**
+ * Initialization of 8bit color function
+ * @param open
+ * @param close
+ */
+function init8(str: string, open: number, close: number, color: number) {
+  return enabled
+    ? "\x1b[" + open + ";5;" + clampAndTruncate(color) + "m" + str + "\x1b[" +
+      close + "m"
+    : str;
+}
+
+/**
+ * Set text color using paletted 8bit colors.
+ * https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
+ * @param str text color to apply paletted 8bit colors to
+ * @param color code
+ */
+export function rgb8(str: string, color: number): string {
+  return init8(str, 38, 39, color);
+}
+
+/**
+ * Set background color using paletted 8bit colors.
+ * https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
+ * @param str text color to apply paletted 8bit background colors to
+ * @param color code
+ */
+export function bgRgb8(str: string, color: number): string {
+  return init8(str, 48, 49, color);
+}
+
+/**
+ * Initialization of 24bit color function
+ * @param open
+ * @param close
+ */
+function init24(
+  str: string,
+  open: number,
+  close: number,
+  color: number | Rgb,
+) {
+  if (typeof color === "number") {
+    return enabled
+      ? "\x1b[" + open + ";2;" + ((color >> 16) & 0xff) + ";" +
+        ((color >> 8) & 0xff) + ";" + (color & 0xff) + "m" + str + "\x1b[" +
+        close + "m"
+      : str;
+  } else {
+    return enabled
+      ? "\x1b[" + open + ";2;" + clampAndTruncate(color.r) + ";" +
+        clampAndTruncate(color.g) + ";" + clampAndTruncate(color.b) + "m" +
+        str + "\x1b[" + close + "m"
+      : str;
+  }
+}
+
+/**
+ * Set text color using 24bit rgb.
+ * `color` can be a number in range `0x000000` to `0xffffff` or
+ * an `Rgb`.
+ *
+ * To produce the color magenta:
+ *
+ * ```ts
+ *      import { rgb24 } from "https://deno.land/std@$STD_VERSION/fmt/colors.ts";
+ *      rgb24("foo", 0xff00ff);
+ *      rgb24("foo", {r: 255, g: 0, b: 255});
+ * ```
+ * @param str text color to apply 24bit rgb to
+ * @param color code
+ */
+export function rgb24(str: string, color: number | Rgb): string {
+  return init24(str, 38, 39, color);
+}
+
+/**
+ * Set background color using 24bit rgb.
+ * `color` can be a number in range `0x000000` to `0xffffff` or
+ * an `Rgb`.
+ *
+ * To produce the color magenta:
+ *
+ * ```ts
+ *      import { bgRgb24 } from "https://deno.land/std@$STD_VERSION/fmt/colors.ts";
+ *      bgRgb24("foo", 0xff00ff);
+ *      bgRgb24("foo", {r: 255, g: 0, b: 255});
+ * ```
+ * @param str text color to apply 24bit rgb to
+ * @param color code
+ */
+export function bgRgb24(str: string, color: number | Rgb): string {
+  return init24(str, 48, 49, color);
+}
+
+// https://github.com/chalk/ansi-regex/blob/02fa893d619d3da85411acc8fd4e2eea0e95a9d9/index.js
+const ANSI_PATTERN = new RegExp(
+  [
+    "[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)",
+    "(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TXZcf-nq-uy=><~]))",
+  ].join("|"),
+  "g",
+);
+
+/**
+ * Remove ANSI escape codes from the string.
+ * @param string to remove ANSI escape codes from
+ */
+export function stripAnsiCode(string: string): string {
+  return string.replace(ANSI_PATTERN, "");
+}
