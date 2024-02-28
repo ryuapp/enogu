@@ -3,13 +3,15 @@ import { build, emptyDir } from "https://deno.land/x/dnt@0.38.1/mod.ts";
 await emptyDir("./npm");
 
 await build({
-  entryPoints: ["./src/mod.ts", {
+  entryPoints: ["./src/colors.ts", {
     name: "./tiny",
     path: "./src/tiny.ts",
   }],
   outDir: "./npm",
   shims: {
-    deno: true,
+    deno: {
+      test: "dev",
+    },
   },
   package: {
     name: "enogu",

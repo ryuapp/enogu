@@ -1,7 +1,7 @@
 import * as colors from "https://deno.land/std/fmt/colors.ts";
 import chalk from "npm:chalk";
 import pico from "npm:picocolors";
-import * as enogu from "../src/mod.ts";
+import * as enogu from "../src/colors.ts";
 
 // deno-lint-ignore no-unused-vars
 let out;
