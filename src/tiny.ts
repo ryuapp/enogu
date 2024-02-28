@@ -1,7 +1,10 @@
+// dnt-shim-ignore
 // deno-lint-ignore no-explicit-any
-const { Deno } = globalThis as any;
+const { Deno, process } = globalThis as any;
 const noColor = typeof Deno?.noColor === "boolean"
   ? Deno.noColor as boolean
+  : typeof process !== "undefined"
+  ? process.env.NO_COLOR === "true"
   : false;
 
 function init(open: number, close: number) {
