@@ -1,3 +1,10 @@
+/*
+ * Painting your terminal with colors.
+ * This module is the tiny version with only limited colors implemented.
+ *
+ * @module
+ */
+
 // dnt-shim-ignore
 // deno-lint-ignore no-explicit-any
 const { Deno, process } = globalThis as any;

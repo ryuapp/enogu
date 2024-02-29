@@ -1,3 +1,10 @@
+/*
+ * Painting your terminal with colors.
+ * This module is compatible with fmt/colors.ts from Deno standard library.
+ *
+ * @module
+ */
+
 // dnt-shim-ignore
 // deno-lint-ignore no-explicit-any
 const { Deno, process } = globalThis as any;
