@@ -6,7 +6,7 @@ Simple, fast, and easy to use.
 ## Usage
 
 ```ts
-import { red } from "https://deno.land/x/enogu@0.2.0/colors.ts";
+import { red } from "https://deno.land/x/enogu@0.3.0/colors.ts";
 
 console.log(red("Hello, world!"));
 ```
@@ -21,9 +21,6 @@ console.log(red("Hello, world!"));
 ## Benchmarks
 
 ```bash
-cpu: Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz
-runtime: deno 1.38.2 (x86_64-pc-windows-msvc)
-
 /bench/complex_bench.ts
 benchmark       time (avg)        iter/s             (min … max)       p75       p99      p995
 ---------------------------------------------------------------- -----------------------------
