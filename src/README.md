@@ -1,8 +1,8 @@
 # enogu
 
 [![npm](https://img.shields.io/npm/v/enogu)](https://www.npmjs.com/package/enogu)
-[![deno.land/x](https://shield.deno.dev/x/enogu)](https://shield.deno.dev/x/enogu)
-[![jsr](https://jsr.io/badges/@ryu/enogu)](https://jsr.io/badges/@ryu/enogu)
+[![deno.land/x](https://shield.deno.dev/x/enogu)](https://deno.land/x/enogu)
+[![jsr](https://jsr.io/badges/@ryu/enogu)](http://jsr.io/@ryu/enogu)
 
 **enogu** is a library for painting your terminal with colors.\
 Inspired by Deno standard library
