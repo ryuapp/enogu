@@ -1,24 +1,33 @@
 # enogu
 
-**enogu** is a library for painting your terminal with colors.\
-Simple, fast, and easy to use.
+[![npm](https://img.shields.io/npm/v/enogu)](https://www.npmjs.com/package/enogu)
+[![deno.land/x](https://shield.deno.dev/x/enogu)](https://shield.deno.dev/x/enogu)
+[![jsr](https://jsr.io/badges/@ryu/enogu)](https://jsr.io/badges/@ryu/enogu)
 
-## Usage
+**enogu** is a library for painting your terminal with colors.\
+Inspired by Deno standard library
+[fmt/colors](https://deno.land/std/fmt/colors.ts),
+[chalk](https://github.com/chalk/chalk) and
+[picocolors](https://github.com/alexeyraspopov/picocolors).
 
 ```ts
-import { red } from "https://deno.land/x/enogu@0.3.1/colors.ts";
+import { red } from "enogu";
 
 console.log(red("Hello, world!"));
 ```
 
-## Modules
+## Features
 
-| name      | description                         |
-| --------- | ----------------------------------- |
-| colors.ts | (Recommend) Colors and decorations. |
-| tiny.ts   | Essential colors and decorations.   |
+- No dependencies
+- Faster than Deno std library [fmt/colors](https://deno.land/std/fmt/colors.ts)
+  - Compatible with [fmt/colors](https://deno.land/std/fmt/colors.ts)
+- Support `NO_COLOR` environment variable
+- Comaptible with any JavaScript runtime, including Deno, Node.js and Bun
+- Available from multiple JavaScript registries(npm, jsr and deno.land/x)
 
 ## Benchmarks
+
+**enogu** is faster than other similar libraries.
 
 ```bash
 /bench/complex_bench.ts
