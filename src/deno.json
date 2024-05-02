@@ -1,6 +1,6 @@
 {
   "name": "@ryu/enogu",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "exports": {
     ".": "./colors.ts",
     "./tiny": "./tiny.ts"
