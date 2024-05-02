@@ -6,12 +6,20 @@
 
 **enogu** is a library for painting your terminal with colors.\
 Inspired by Deno standard library
-[fmt/colors](https://deno.land/std/fmt/colors.ts),
+[@deno/fmt/colors](https://jsr.io/@std/fmt/doc/colors/~),
 [chalk](https://github.com/chalk/chalk) and
 [picocolors](https://github.com/alexeyraspopov/picocolors).
 
 ```ts
+// npm
 import { red } from "enogu";
+
+console.log(red("Hello, world!"));
+```
+
+```ts
+// jsr
+import { red } from "@ryu/enogu";
 
 console.log(red("Hello, world!"));
 ```
@@ -19,8 +27,9 @@ console.log(red("Hello, world!"));
 ## Features
 
 - No dependencies
-- Faster than Deno std library [fmt/colors](https://deno.land/std/fmt/colors.ts)
-  - Compatible with [fmt/colors](https://deno.land/std/fmt/colors.ts)
+- Faster than Deno std library
+  [@deno/fmt/colors](https://jsr.io/@std/fmt/doc/colors/~)
+  - Compatible with [@deno/fmt/colors](https://jsr.io/@std/fmt/doc/colors/~)
 - Support `NO_COLOR` environment variable
 - Comaptible with any JavaScript runtime, including Deno, Node.js and Bun
 - Available from multiple JavaScript registries(npm, jsr and deno.land/x)
