@@ -1,4 +1,4 @@
-// Copyright 2023-2024 ryu. All rights reserved. MIT license.
+// Copyright 2023-2024 ryu. All rights reserved. MIT license. @license
 /*
  * Painting your terminal with colors.
  * This module is compatible with fmt/colors.ts from Deno standard library.
@@ -309,7 +309,7 @@ export const bgBrightCyan: (str: string) => string = init(106, 49);
 export const bgBrightWhite: (str: string) => string = init(107, 49);
 
 // From here onwards, we have modified the fork from https://deno.land/std@0.209.0/fmt/colors.ts.
-// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2023 the Deno authors. All rights reserved. MIT license. @license
 
 /**
  * Clam and truncate color codes

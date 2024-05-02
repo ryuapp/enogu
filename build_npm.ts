@@ -63,6 +63,7 @@ await esbuild.build({
   bundle: true,
   minify: true,
   outExtension: { ".js": ".mjs" },
+  legalComments: "eof",
 });
 esbuild.stop();
 // cjs
@@ -74,6 +75,7 @@ await esbuild.build({
   bundle: true,
   minify: true,
   outExtension: { ".js": ".cjs" },
+  legalComments: "eof",
 });
 esbuild.stop();
 
