@@ -1,4 +1,4 @@
-import * as colors from "https://deno.land/std/fmt/colors.ts";
+import * as colors from "jsr:@std/fmt/colors";
 import chalk from "npm:chalk";
 import pico from "npm:picocolors";
 import * as enogu from "../src/colors.ts";

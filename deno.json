@@ -2,12 +2,15 @@
   "lock": false,
   "tasks": {
     "bench": "deno bench --allow-sys --allow-read",
-    "build:npm": "deno run --allow-run --allow-read --allow-write --allow-env --allow-net ./scripts/build_npm.ts"
+    "build:npm": "deno run --allow-sys --allow-run --allow-read --allow-write --allow-env --allow-net ./scripts/build_npm.ts"
   },
   "exclude": [
     "npm"
   ],
   "workspaces": [
     "./src"
-  ]
+  ],
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.1"
+  }
 }
