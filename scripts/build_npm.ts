@@ -1,3 +1,4 @@
+// Copyright 2023-2024 ryu. All rights reserved. MIT license.
 import { build, emptyDir } from "@deno/dnt";
 
 await emptyDir("./npm");

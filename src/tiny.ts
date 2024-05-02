@@ -1,3 +1,4 @@
+// Copyright 2023-2024 ryu. All rights reserved. MIT license.
 /*
  * Painting your terminal with colors.
  * This module is the tiny version with only limited colors implemented.

@@ -1,3 +1,4 @@
+// Copyright 2023-2024 ryu. All rights reserved. MIT license.
 /*
  * Painting your terminal with colors.
  * This module is compatible with fmt/colors.ts from Deno standard library.
