@@ -2,115 +2,117 @@
 import { assertEquals } from "@std/assert";
 import * as c from "../src/tiny.ts";
 
-Deno.test("reset", () => {
+const { test } = Deno;
+
+test("reset", () => {
   assertEquals(c.reset("enogu is colors"), "[0menogu is colors[0m");
 });
 
-Deno.test("bold", () => {
+test("bold", () => {
   assertEquals(c.bold("enogu is colors"), "[1menogu is colors[22m");
 });
 
-Deno.test("dim", () => {
+test("dim", () => {
   assertEquals(c.dim("enogu is colors"), "[2menogu is colors[22m");
 });
 
-Deno.test("italic", () => {
+test("italic", () => {
   assertEquals(c.italic("enogu is colors"), "[3menogu is colors[23m");
 });
 
-Deno.test("underline", () => {
+test("underline", () => {
   assertEquals(c.underline("enogu is colors"), "[4menogu is colors[24m");
 });
 
-Deno.test("inverse", () => {
+test("inverse", () => {
   assertEquals(c.inverse("enogu is colors"), "[7menogu is colors[27m");
 });
 
-Deno.test("hidden", () => {
+test("hidden", () => {
   assertEquals(c.hidden("enogu is colors"), "[8menogu is colors[28m");
 });
 
-Deno.test("strikethrough", () => {
+test("strikethrough", () => {
   assertEquals(c.strikethrough("enogu is colors"), "[9menogu is colors[29m");
 });
 
-Deno.test("black", () => {
+test("black", () => {
   assertEquals(c.black("enogu is colors"), "[30menogu is colors[39m");
 });
 
-Deno.test("red", () => {
+test("red", () => {
   assertEquals(c.red("enogu is colors"), "[31menogu is colors[39m");
 });
 
-Deno.test("green", () => {
+test("green", () => {
   assertEquals(c.green("enogu is colors"), "[32menogu is colors[39m");
 });
 
-Deno.test("yellow", () => {
+test("yellow", () => {
   assertEquals(c.yellow("enogu is colors"), "[33menogu is colors[39m");
 });
 
-Deno.test("blue", () => {
+test("blue", () => {
   assertEquals(c.blue("enogu is colors"), "[34menogu is colors[39m");
 });
 
-Deno.test("magenta", () => {
+test("magenta", () => {
   assertEquals(c.magenta("enogu is colors"), "[35menogu is colors[39m");
 });
 
-Deno.test("cyan", () => {
+test("cyan", () => {
   assertEquals(c.cyan("enogu is colors"), "[36menogu is colors[39m");
 });
 
-Deno.test("white", () => {
+test("white", () => {
   assertEquals(c.white("enogu is colors"), "[37menogu is colors[39m");
 });
 
-Deno.test("gray", () => {
+test("gray", () => {
   assertEquals(c.gray("enogu is colors"), "[90menogu is colors[39m");
 });
 
-Deno.test("bgBlack", () => {
+test("bgBlack", () => {
   assertEquals(c.bgBlack("enogu is colors"), "[40menogu is colors[49m");
 });
 
-Deno.test("bgRed", () => {
+test("bgRed", () => {
   assertEquals(c.bgRed("enogu is colors"), "[41menogu is colors[49m");
 });
 
-Deno.test("bgGreen", () => {
+test("bgGreen", () => {
   assertEquals(c.bgGreen("enogu is colors"), "[42menogu is colors[49m");
 });
 
-Deno.test("bgYellow", () => {
+test("bgYellow", () => {
   assertEquals(c.bgYellow("enogu is colors"), "[43menogu is colors[49m");
 });
 
-Deno.test("bgBlue", () => {
+test("bgBlue", () => {
   assertEquals(c.bgBlue("enogu is colors"), "[44menogu is colors[49m");
 });
 
-Deno.test("bgMagenta", () => {
+test("bgMagenta", () => {
   assertEquals(c.bgMagenta("enogu is colors"), "[45menogu is colors[49m");
 });
 
-Deno.test("bgCyan", () => {
+test("bgCyan", () => {
   assertEquals(c.bgCyan("enogu is colors"), "[46menogu is colors[49m");
 });
 
-Deno.test("bgWhite", () => {
+test("bgWhite", () => {
   assertEquals(c.bgWhite("enogu is colors"), "[47menogu is colors[49m");
 });
 
-Deno.test("bgGray", () => {
+test("bgGray", () => {
   assertEquals(c.bgGray("enogu is colors"), "[100menogu is colors[49m");
 });
 
-Deno.test("single color", () => {
+test("single color", () => {
   assertEquals(c.red("enogu is colors"), "[31menogu is colors[39m");
 });
 
-Deno.test("complex color", () => {
+test("complex color", () => {
   assertEquals(
     c.bgBlue(c.red("enogu is colors")),
     "[44m[31menogu is colors[39m[49m",
