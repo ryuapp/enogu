@@ -6,7 +6,6 @@
  * @module
  */
 
-// dnt-shim-ignore
 // deno-lint-ignore no-explicit-any
 const { Deno, process } = globalThis as any;
 const noColor = typeof Deno?.noColor === "boolean"

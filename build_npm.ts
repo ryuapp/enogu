@@ -7,7 +7,7 @@ import { emptyDir } from "@std/fs";
 
 // setup
 const outDir = "npm";
-const fileList = ["colors", "tiny"];
+const fileList = ["colors"];
 
 const entryPoints = fileList.map((file) => `${outDir}/${file}.ts`);
 
@@ -31,11 +31,6 @@ const packageJson = {
       types: "./types/colors.d.ts",
       import: "./esm/colors.mjs",
       require: "./cjs/colors.cjs",
-    },
-    "./tiny": {
-      types: "./types/tiny.d.ts",
-      import: "./esm/tiny.mjs",
-      require: "./cjs/tiny.cjs",
     },
   },
   devDependencies: {},

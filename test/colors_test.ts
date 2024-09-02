@@ -145,7 +145,10 @@ test("bgGray", () => {
 });
 
 test("bgBrightBlack", () => {
-  assertEquals(c.bgBrightBlack("enogu is colors"), "[100menogu is colors[49m");
+  assertEquals(
+    c.bgBrightBlack("enogu is colors"),
+    "[100menogu is colors[49m",
+  );
 });
 
 test("bgBrightRed", () => {
@@ -153,11 +156,17 @@ test("bgBrightRed", () => {
 });
 
 test("bgBrightGreen", () => {
-  assertEquals(c.bgBrightGreen("enogu is colors"), "[102menogu is colors[49m");
+  assertEquals(
+    c.bgBrightGreen("enogu is colors"),
+    "[102menogu is colors[49m",
+  );
 });
 
 test("bgBrightYellow", () => {
-  assertEquals(c.bgBrightYellow("enogu is colors"), "[103menogu is colors[49m");
+  assertEquals(
+    c.bgBrightYellow("enogu is colors"),
+    "[103menogu is colors[49m",
+  );
 });
 
 test("bgBrightBlue", () => {
@@ -176,7 +185,10 @@ test("bgBrightCyan", () => {
 });
 
 test("bgBrightWhite", () => {
-  assertEquals(c.bgBrightWhite("enogu is colors"), "[107menogu is colors[49m");
+  assertEquals(
+    c.bgBrightWhite("enogu is colors"),
+    "[107menogu is colors[49m",
+  );
 });
 
 test("single color", () => {
