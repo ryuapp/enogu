@@ -4,7 +4,7 @@
     "build:npm": "deno run --allow-env --allow-sys --allow-run --allow-write=npm --allow-read build_npm.ts"
   },
   "exclude": ["npm"],
-  "workspaces": ["./src"],
+  "workspace": ["./src"],
   "imports": {
     "@david/dts-minify": "jsr:@david/dts-minify@^0.3.3",
     "@std/assert": "jsr:@std/assert@^0.224.0",
