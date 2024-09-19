@@ -2,7 +2,8 @@
 import denoJson from "./deno.json" with { type: "json" };
 import * as esbuild from "esbuild";
 import { createMinifier } from "@david/dts-minify";
-import { ts } from "ts-morph";
+// @ts-ignore-next-line
+import { ts } from "@ts-morph/ts-morph";
 import { emptyDir } from "@std/fs";
 
 // setup
