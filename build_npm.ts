@@ -25,13 +25,20 @@ const packageJson = {
   bugs: {
     url: "https://github.com/ryuapp/enogu/issues",
   },
+  type: "module",
   main: "./cjs/colors.cjs",
   module: "./esm/colors.mjs",
+  types: "./types/colors.d.cts",
   exports: {
     ".": {
-      types: "./types/colors.d.ts",
-      import: "./esm/colors.mjs",
-      require: "./cjs/colors.cjs",
+      import: {
+        types: "./types/colors.d.ts",
+        default: "./esm/colors.mjs",
+      },
+      require: {
+        types: "./types/colors.d.cts",
+        default: "./cjs/colors.cjs",
+      },
     },
   },
   devDependencies: {},
@@ -84,10 +91,12 @@ for (const file of fileList) {
   const inputText = decoder.decode(content);
   const minifiedText = minifier.minify(inputText, { keepJsDocs: true });
 
-  Deno.writeFile(
-    `${outDir}/types/${file}.d.ts`,
-    new TextEncoder().encode(minifiedText),
-  );
+  for (const ext of [".d.ts", ".d.cts"]) {
+    Deno.writeFile(
+      `${outDir}/types/${file}${ext}`,
+      new TextEncoder().encode(minifiedText),
+    );
+  }
 }
 
 // package.json
