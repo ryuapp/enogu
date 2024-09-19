@@ -3,7 +3,7 @@
     "bench": "deno bench --allow-sys --allow-read",
     "build:npm": "deno run --allow-env --allow-sys --allow-run --allow-write=npm --allow-read build_npm.ts"
   },
-  "exclude": ["npm"],
+  "exclude": ["npm", ".gitattributes", "LICENSE", ".gitignore"],
   "workspace": ["./src"],
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.3",
