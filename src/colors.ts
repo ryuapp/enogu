@@ -7,12 +7,7 @@
  */
 
 // deno-lint-ignore no-explicit-any
-const { Deno, process } = globalThis as any;
-const noColor = typeof Deno?.noColor === "boolean"
-  ? Deno.noColor as boolean
-  : typeof process !== "undefined"
-  ? "NO_COLOR" in process?.env
-  : false;
+const noColor = !!((globalThis as any)?.process?.env?.NO_COLOR);
 
 let enabled = !noColor;
 
@@ -27,7 +22,7 @@ interface Rgb {
  * @param value
  */
 export function setColorEnabled(value: boolean) {
-  if (Deno?.noColor) {
+  if (noColor) {
     return;
   }
 
