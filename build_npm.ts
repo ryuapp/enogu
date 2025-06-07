@@ -26,19 +26,11 @@ const packageJson = {
     url: "https://github.com/ryuapp/enogu/issues",
   },
   type: "module",
-  main: "./cjs/colors.cjs",
-  module: "./esm/colors.mjs",
-  types: "./types/colors.d.cts",
+  types: "./colors.d.mts",
   exports: {
     ".": {
-      import: {
-        types: "./types/colors.d.ts",
-        default: "./esm/colors.mjs",
-      },
-      require: {
-        types: "./types/colors.d.cts",
-        default: "./cjs/colors.cjs",
-      },
+      types: "./colors.d.ts",
+      default: "./colors.mjs",
     },
   },
   devDependencies: {},
@@ -47,9 +39,6 @@ const packageJson = {
 // output
 // cleanup
 await emptyDir("./npm");
-await Deno.mkdirSync("npm/types");
-await Deno.mkdirSync("npm/cjs");
-await Deno.mkdirSync("npm/esm");
 
 Deno.copyFileSync("LICENSE", `${outDir}/LICENSE`);
 Deno.copyFileSync("src/README.md", `${outDir}/README.md`);
@@ -61,23 +50,11 @@ for (const filename of fileList) {
 await esbuild.build({
   entryPoints,
   format: "esm",
-  outdir: `${outDir}/esm`,
+  outdir: `${outDir}`,
   sourcemap: false,
   bundle: true,
   minify: true,
   outExtension: { ".js": ".mjs" },
-  legalComments: "eof",
-});
-esbuild.stop();
-// cjs
-await esbuild.build({
-  entryPoints,
-  format: "cjs",
-  outdir: `${outDir}/cjs`,
-  sourcemap: false,
-  bundle: true,
-  minify: true,
-  outExtension: { ".js": ".cjs" },
   legalComments: "eof",
 });
 esbuild.stop();
@@ -91,9 +68,9 @@ for (const file of fileList) {
   const inputText = decoder.decode(content);
   const minifiedText = minifier.minify(inputText, { keepJsDocs: true });
 
-  for (const ext of [".d.ts", ".d.cts"]) {
+  for (const ext of [".d.mts"]) {
     Deno.writeFile(
-      `${outDir}/types/${file}${ext}`,
+      `${outDir}/${file}${ext}`,
       new TextEncoder().encode(minifiedText),
     );
   }
