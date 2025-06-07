@@ -3,14 +3,14 @@
     "proseWrap": "preserve"
   },
   "tasks": {
-    "bench": "deno bench --allow-sys --allow-read",
-    "build:npm": "deno run --allow-env --allow-sys --allow-run --allow-write=npm --allow-read build_npm.ts"
+    "bench": "deno bench -E=TF_BUILD,TERM -S=osRelease",
+    "build:npm": "deno run -E -RW=npm --allow-run build_npm.ts"
   },
   "exclude": ["npm", ".gitattributes", "LICENSE", ".gitignore"],
-  "workspace": ["./src"],
+  "workspace": ["./src", "./bench"],
   "imports": {
-    "@std/assert": "jsr:@std/assert@^1.0.13",
-    "@std/fs": "jsr:@std/fs@^1.0.18",
+    "@std/assert": "jsr:@std/assert@^1",
+    "@std/fs": "jsr:@std/fs@^1",
     "@david/dts-minify": "jsr:@david/dts-minify@^0.3.3",
     "@ts-morph/ts-morph": "jsr:@ts-morph/ts-morph@^26.0.0",
     "esbuild": "npm:esbuild@^0.25.5"

@@ -1,8 +1,8 @@
 // Copyright 2023-2025 ryu. All rights reserved. MIT license.
-import * as colors from "jsr:@std/fmt/colors";
-import chalk from "npm:chalk";
-import pico from "npm:picocolors";
-import * as enogu from "../src/colors.ts";
+import * as colors from "@std/fmt/colors";
+import chalk from "chalk";
+import pico from "picocolors";
+import * as enogu from "@ryu/enogu";
 
 // deno-lint-ignore no-unused-vars
 let out;

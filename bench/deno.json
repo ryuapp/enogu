@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@std/fmt": "jsr:@std/fmt@^1.0.8",
+    "chalk": "npm:chalk@^5.4.1",
+    "picocolors": "npm:picocolors@^1.1.1"
+  }
+}
