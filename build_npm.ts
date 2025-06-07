@@ -2,8 +2,7 @@
 import denoJson from "./deno.json" with { type: "json" };
 import * as esbuild from "esbuild";
 import { createMinifier } from "@david/dts-minify";
-// @ts-ignore-next-line
-import { ts } from "@ts-morph/ts-morph";
+import { Project, ts } from "@ts-morph/ts-morph";
 import { emptyDir } from "@std/fs";
 
 // setup
@@ -29,7 +28,7 @@ const packageJson = {
   types: "./colors.d.mts",
   exports: {
     ".": {
-      types: "./colors.d.ts",
+      types: "./colors.d.mts",
       default: "./colors.mjs",
     },
   },
@@ -59,21 +58,31 @@ await esbuild.build({
 });
 esbuild.stop();
 
-// d.ts
+// generate d.ts
+const project = new Project({
+  compilerOptions: {
+    emitDeclarationOnly: true,
+    outDir,
+    declaration: true,
+  },
+});
+project.addSourceFilesAtPaths(`${outDir}/*.ts`);
+await project.emit();
+
+// minify d.ts
 const decoder = new TextDecoder("utf-8");
 // setup (provide a TS Compiler API object)
 const minifier = createMinifier(ts);
 for (const file of fileList) {
-  const content = await Deno.readFile(`${outDir}/${file}.ts`);
+  const content = await Deno.readFile(`${outDir}/${file}.d.ts`);
   const inputText = decoder.decode(content);
   const minifiedText = minifier.minify(inputText, { keepJsDocs: true });
 
-  for (const ext of [".d.mts"]) {
-    Deno.writeFile(
-      `${outDir}/${file}${ext}`,
-      new TextEncoder().encode(minifiedText),
-    );
-  }
+  Deno.writeFileSync(
+    `${outDir}/${file}.d.mts`,
+    new TextEncoder().encode(minifiedText),
+  );
+  Deno.removeSync(`${outDir}/${file}.d.ts`);
 }
 
 // package.json
