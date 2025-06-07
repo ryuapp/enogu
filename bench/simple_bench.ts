@@ -1,4 +1,4 @@
-// Copyright 2023-2024 ryu. All rights reserved. MIT license.
+// Copyright 2023-2025 ryu. All rights reserved. MIT license.
 import * as colors from "jsr:@std/fmt/colors";
 import chalk from "npm:chalk";
 import pico from "npm:picocolors";

@@ -1,4 +1,4 @@
-// Copyright 2023-2024 ryu. All rights reserved. MIT license.
+// Copyright 2023-2025 ryu. All rights reserved. MIT license.
 import denoJson from "./deno.json" with { type: "json" };
 import * as esbuild from "esbuild";
 import { createMinifier } from "@david/dts-minify";
