@@ -1,4 +1,7 @@
 {
+  "fmt": {
+    "proseWrap": "preserve"
+  },
   "tasks": {
     "bench": "deno bench --allow-sys --allow-read",
     "build:npm": "deno run --allow-env --allow-sys --allow-run --allow-write=npm --allow-read build_npm.ts"
