@@ -1,6 +1,6 @@
 // Copyright 2023-2025 ryu. All rights reserved. MIT license.
 import { assertEquals } from "@std/assert";
-import * as c from "../src/colors.ts";
+import * as c from "@ryu/enogu";
 
 const { test } = Deno;
 

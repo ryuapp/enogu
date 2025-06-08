@@ -7,7 +7,7 @@ import { emptyDir } from "@std/fs";
 
 // setup
 const outDir = "npm";
-const fileList = ["colors"];
+const fileList = ["mod"];
 
 const entryPoints = fileList.map((file) => `${outDir}/${file}.ts`);
 
@@ -25,11 +25,11 @@ const packageJson = {
     url: "https://github.com/ryuapp/enogu/issues",
   },
   type: "module",
-  types: "./colors.d.mts",
+  types: "./mod.d.mts",
   exports: {
     ".": {
-      types: "./colors.d.mts",
-      default: "./colors.mjs",
+      types: "./mod.d.mts",
+      default: "./mod.mjs",
     },
   },
   devDependencies: {},
