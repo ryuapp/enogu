@@ -21,18 +21,18 @@ Inspired by Deno standard library
 
 ## Usage
 
-```ts
+```ts | ignore
 // npm
-import { red } from "enogu";
+import { green } from "enogu";
 
-console.log(red("Hello, world!"));
+console.log(green("Hello world!"));
 ```
 
 ```ts
 // jsr
-import { red } from "@ryu/enogu";
+import { green } from "@ryu/enogu";
 
-console.log(red("Hello, world!"));
+console.log(green("Hello world!"));
 ```
 
 ## LICENSE
