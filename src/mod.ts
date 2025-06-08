@@ -4,9 +4,9 @@
  * Painting your terminal with colors.
  * @example
  * ```ts
- * import { red } from "enogu";
+ * import { green } from "@ryu/enogu";
  *
- * console.log(red("Hello World!"));
+ * console.log(green("Hello World!"));
  * ```
  *
  * @module

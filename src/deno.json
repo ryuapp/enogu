@@ -2,6 +2,6 @@
   "name": "@ryu/enogu",
   "version": "0.5.1",
   "exports": {
-    ".": "./colors.ts"
+    ".": "./mod.ts"
   }
 }
