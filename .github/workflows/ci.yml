@@ -38,3 +38,5 @@ jobs:
 
       - name: Dry run to publish to npm
         run: cd npm && npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: "fake-token-for-dry-run"
