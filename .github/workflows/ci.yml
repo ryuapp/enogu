@@ -15,6 +15,12 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v2
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
+
       - name: Lint
         run: deno lint
 
@@ -26,3 +32,10 @@ jobs:
 
       - name: Build npm
         run: deno task build:npm
+
+      - name: Dry run to publish to npm
+        working-directory: ./npm
+        run: npm publish --dry-run
+
+      - name: Dry run to publish to JSR
+        run: deno publish --dry-run
