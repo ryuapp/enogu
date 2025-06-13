@@ -34,6 +34,3 @@ jobs:
 
       - name: Build npm
         run: deno task build:npm
-
-      - name: Dry run to publish to npm
-        run: cd npm && npm publish --dry-run
