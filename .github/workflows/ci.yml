@@ -37,3 +37,7 @@ jobs:
 
       - name: Build npm
         run: deno task build:npm
+
+      - name: Check npm package
+        working-directory: npm
+        run: npm pack

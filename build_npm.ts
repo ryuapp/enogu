@@ -1,5 +1,6 @@
 // Copyright 2023-2025 ryu. All rights reserved. MIT license.
 import denoJson from "./deno.json" with { type: "json" };
+import enoguDenoJson from "./src/deno.json" with { type: "json" };
 import * as esbuild from "esbuild";
 import { createMinifier } from "@david/dts-minify";
 import { Project, ts } from "@ts-morph/ts-morph";
@@ -11,10 +12,14 @@ const fileList = ["mod"];
 
 const entryPoints = fileList.map((file) => `${outDir}/${file}.ts`);
 
+if (!("version" in enoguDenoJson)) {
+  throw new Error("Version in deno.json is not defined.");
+}
+
 // package.json
 const packageJson = {
   name: "enogu",
-  version: Deno.args[0],
+  version: enoguDenoJson.version,
   description: "Painting your terminal with colors",
   license: "MIT",
   repository: {
