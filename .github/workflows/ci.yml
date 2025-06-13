@@ -26,6 +26,9 @@ jobs:
       - name: Test
         run: deno test
 
+      - name: Types
+        run: deno check .
+
       - name: Format
         run: deno fmt --check
 

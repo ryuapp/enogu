@@ -32,6 +32,7 @@ const packageJson = {
       default: "./mod.mjs",
     },
   },
+  devDependencies: {},
   sideEffects: false,
 };
 
