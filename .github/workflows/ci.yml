@@ -15,6 +15,11 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v2
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+
       - name: Lint
         run: deno lint
 
@@ -23,6 +28,9 @@ jobs:
 
       - name: Format
         run: deno fmt --check
+
+      - name: Dry run to publish to JSR
+        run: deno publish --dry-run
 
       - name: Build npm
         run: deno task build:npm
