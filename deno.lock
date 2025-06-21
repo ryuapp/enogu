@@ -3,19 +3,24 @@
   "specifiers": {
     "jsr:@david/code-block-writer@13": "13.0.3",
     "jsr:@david/dts-minify@~0.3.3": "0.3.3",
+    "jsr:@luca/esbuild-deno-loader@~0.11.1": "0.11.1",
     "jsr:@std/assert@1": "1.0.13",
+    "jsr:@std/bytes@^1.0.2": "1.0.6",
+    "jsr:@std/encoding@^1.0.5": "1.0.10",
     "jsr:@std/fmt@^1.0.8": "1.0.8",
     "jsr:@std/fs@1": "1.0.18",
     "jsr:@std/fs@^1.0.18": "1.0.18",
     "jsr:@std/internal@^1.0.6": "1.0.8",
     "jsr:@std/path@1": "1.1.0",
+    "jsr:@std/path@^1.0.6": "1.1.0",
     "jsr:@std/path@^1.1.0": "1.1.0",
     "jsr:@ts-morph/common@0.27": "0.27.0",
     "jsr:@ts-morph/ts-morph@26": "26.0.0",
     "npm:@types/node@*": "22.15.15",
     "npm:chalk@^5.4.1": "5.4.1",
     "npm:esbuild@~0.25.5": "0.25.5",
-    "npm:picocolors@^1.1.1": "1.1.1"
+    "npm:picocolors@^1.1.1": "1.1.1",
+    "npm:yoctocolors@^2.1.1": "2.1.1"
   },
   "jsr": {
     "@david/code-block-writer@13.0.3": {
@@ -24,11 +29,25 @@
     "@david/dts-minify@0.3.3": {
       "integrity": "7eb65970fae11e0576f9dcb152048e7ecab6cb7ce9c0d8f981921dd010c67605"
     },
+    "@luca/esbuild-deno-loader@0.11.1": {
+      "integrity": "dc020d16d75b591f679f6b9288b10f38bdb4f24345edb2f5732affa1d9885267",
+      "dependencies": [
+        "jsr:@std/bytes",
+        "jsr:@std/encoding",
+        "jsr:@std/path@^1.0.6"
+      ]
+    },
     "@std/assert@1.0.13": {
       "integrity": "ae0d31e41919b12c656c742b22522c32fb26ed0cba32975cb0de2a273cb68b29",
       "dependencies": [
         "jsr:@std/internal"
       ]
+    },
+    "@std/bytes@1.0.6": {
+      "integrity": "f6ac6adbd8ccd99314045f5703e23af0a68d7f7e58364b47d2c7f408aeb5820a"
+    },
+    "@std/encoding@1.0.10": {
+      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
     },
     "@std/fmt@1.0.8": {
       "integrity": "71e1fc498787e4434d213647a6e43e794af4fd393ef8f52062246e06f7e372b7"
@@ -232,13 +251,18 @@
     },
     "undici-types@6.21.0": {
       "integrity": "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ=="
+    },
+    "yoctocolors@2.1.1": {
+      "integrity": "sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ=="
     }
   },
   "workspace": {
     "dependencies": [
       "jsr:@david/dts-minify@~0.3.3",
+      "jsr:@luca/esbuild-deno-loader@~0.11.1",
       "jsr:@std/assert@1",
       "jsr:@std/fs@1",
+      "jsr:@std/path@^1.1.0",
       "jsr:@ts-morph/ts-morph@26",
       "npm:esbuild@~0.25.5"
     ],
@@ -248,6 +272,14 @@
           "jsr:@std/fmt@^1.0.8",
           "npm:chalk@^5.4.1",
           "npm:picocolors@^1.1.1"
+        ]
+      },
+      "bundle": {
+        "dependencies": [
+          "jsr:@std/fmt@^1.0.8",
+          "npm:chalk@^5.4.1",
+          "npm:picocolors@^1.1.1",
+          "npm:yoctocolors@^2.1.1"
         ]
       }
     }
