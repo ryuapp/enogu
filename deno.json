@@ -4,14 +4,17 @@
   },
   "tasks": {
     "bench": "deno bench -E=TF_BUILD,TERM -S=osRelease",
-    "build:npm": "deno run -E -RW=npm --allow-run build_npm.ts"
+    "build:npm": "deno run -E -RW=npm --allow-run build_npm.ts",
+    "check:bundle": "deno run -ERW --allow-run bundle/check_bundle_size.ts"
   },
   "exclude": ["npm", ".gitattributes", "LICENSE", ".gitignore"],
-  "workspace": ["./src", "./bench"],
+  "workspace": ["src", "bench", "bundle"],
   "imports": {
+    "@luca/esbuild-deno-loader": "jsr:@luca/esbuild-deno-loader@^0.11.1",
     "@std/assert": "jsr:@std/assert@^1",
     "@std/fs": "jsr:@std/fs@^1",
     "@david/dts-minify": "jsr:@david/dts-minify@^0.3.3",
+    "@std/path": "jsr:@std/path@^1.1.0",
     "@ts-morph/ts-morph": "jsr:@ts-morph/ts-morph@^26.0.0",
     "esbuild": "npm:esbuild@^0.25.5"
   }
