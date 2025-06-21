@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/enogu?labelColor=171717&color=39b54a)](https://www.npmjs.com/package/enogu)
 [![jsr](https://jsr.io/badges/@ryu/enogu?color=39b54a)](http://jsr.io/@ryu/enogu)
+[![pkg.pr.new](https://pkg.pr.new/badge/ryuapp/enogu)](https://pkg.pr.new/~/ryuapp/enogu)
 
 **enogu** is a library for painting your terminal with colors.\
 Inspired by Deno standard library
