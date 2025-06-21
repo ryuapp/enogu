@@ -38,6 +38,6 @@ jobs:
       - name: Build npm
         run: deno task build:npm
 
-      - name: Check npm package
+      - name: Publish pkg.pr.new
         working-directory: npm
-        run: npm pack
+        run: npx pkg-pr-new publish
