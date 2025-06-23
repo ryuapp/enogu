@@ -22,23 +22,12 @@ const packageJson = {
   version: enoguDenoJson.version,
   description: "Painting your terminal with colors",
   license: "MIT",
-  repository: {
-    type: "git",
-    url: "git+https://github.com/ryuapp/enogu.git",
-  },
-  bugs: {
-    url: "https://github.com/ryuapp/enogu/issues",
-  },
+  repository: "ryuapp/enogu",
   type: "module",
+  exports: "./mod.mjs",
   types: "./mod.d.mts",
-  exports: {
-    ".": {
-      types: "./mod.d.mts",
-      default: "./mod.mjs",
-    },
-  },
-  devDependencies: {},
   sideEffects: false,
+  devDependencies: {},
 };
 
 // output
