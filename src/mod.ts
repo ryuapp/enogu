@@ -1,4 +1,4 @@
-// Copyright 2023-2025 ryu. All rights reserved. MIT license. @license
+// Copyright 2023-2025 ryu. All rights reserved. MIT license.
 
 /*
  * Painting your terminal with colors.
