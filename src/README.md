@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/enogu?labelColor=171717&color=39b54a)](https://www.npmjs.com/package/enogu)
 [![jsr](https://jsr.io/badges/@ryu/enogu?color=39b54a)](http://jsr.io/@ryu/enogu)
-[![pkg.pr.new](https://pkg.pr.new/badge/ryuapp/enogu)](https://pkg.pr.new/~/ryuapp/enogu)
+[![size](https://img.shields.io/bundlejs/size/enogu?labelColor=171717&color=39b54a)](https://packagephobia.com/result?p=enogu)
 
 **enogu** is a library for painting your terminal with colors.\
 Inspired by Deno standard library
@@ -12,7 +12,7 @@ Inspired by Deno standard library
 
 ## Features
 
-⚡️ Zero dependencies - The minimum bundle size.
+⚡️ Zero dependencies - Minimum install size.
 
 🦕 Deno Friendly - No permission flags are required to use Deno.
 
