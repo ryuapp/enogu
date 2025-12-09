@@ -17,7 +17,11 @@ const { Deno, process } = globalThis as any;
 const noColor = typeof Deno?.noColor === "boolean"
   ? Deno.noColor as boolean
   : typeof process !== "undefined"
-  ? "NO_COLOR" in process?.env
+  ? ("FORCE_COLOR" in process?.env)
+    ? false
+    : ("NO_COLOR" in process?.env)
+    ? true
+    : false
   : false;
 
 let enabled = !noColor;
