@@ -16,8 +16,6 @@ Inspired by Deno standard library
 
 🦕 Deno Friendly - No permission flags are required to use Deno.
 
-✨ Support `NO_COLOR` environment variable - Unofficial standard color disable option.
-
 🌍 Multi-Runtime - Compatible with any JavaScript runtime, including Deno, Node.js and Bun.
 
 ## Usage
