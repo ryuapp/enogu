@@ -1,7 +1,4 @@
-import * as esbuild from "esbuild";
-import { denoPlugins } from "@luca/esbuild-deno-loader";
 import { walk } from "@std/fs/walk";
-import { resolve } from "@std/path/resolve";
 import { basename } from "@std/path/basename";
 
 const results: Array<{ name: string; size: number }> = [];
@@ -13,21 +10,20 @@ for await (
   })
 ) {
   try {
-    const result = await esbuild.build({
-      entryPoints: [dirEntry.path],
+    const result = await Deno.bundle({
+      entrypoints: [dirEntry.path],
       format: "esm",
-      sourcemap: false,
-      bundle: true,
       minify: true,
       write: false,
-      platform: "node",
-      plugins: [...denoPlugins({
-        configPath: resolve("deno.json"),
-      })],
     });
 
-    const bundleSize = result.outputFiles.reduce(
-      (total, file) => total + file.contents.length,
+    if (!result.success) {
+      console.error(result.errors);
+      throw Error("Error");
+    }
+
+    const bundleSize = result.outputFiles!.reduce(
+      (total, file) => total + file.contents!.length,
       0,
     );
 
@@ -47,8 +43,6 @@ for await (
     console.error(`Error building ${dirEntry.path}:`, error);
   }
 }
-
-await esbuild.stop();
 
 // Sort results by size
 results.sort((a, b) => a.size - b.size);
