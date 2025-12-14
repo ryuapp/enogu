@@ -1,7 +1,6 @@
 // Copyright 2023-2025 ryu. All rights reserved. MIT license.
 import denoJson from "./deno.json" with { type: "json" };
 import enoguDenoJson from "./src/deno.json" with { type: "json" };
-import * as esbuild from "esbuild";
 import { createMinifier } from "@david/dts-minify";
 import { Project, ts } from "@ts-morph/ts-morph";
 import { emptyDir } from "@std/fs";
@@ -40,18 +39,12 @@ for (const filename of fileList) {
   Deno.copyFileSync(`src/${filename}.ts`, `${outDir}/${filename}.ts`);
 }
 
-// esm
-await esbuild.build({
-  entryPoints,
+await Deno.bundle({
+  entrypoints: entryPoints,
   format: "esm",
-  outdir: `${outDir}`,
-  sourcemap: false,
-  bundle: true,
   minify: true,
-  outExtension: { ".js": ".mjs" },
-  legalComments: "eof",
+  outputDir: outDir,
 });
-esbuild.stop();
 
 // generate d.ts
 const project = new Project({
