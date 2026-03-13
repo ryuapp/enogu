@@ -36,4 +36,4 @@ console.log(green("Hello world!"));
 
 ## LICENSE
 
-MIT
+MIT-0
