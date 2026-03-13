@@ -1,4 +1,3 @@
-// Copyright 2023-2025 ryu. All rights reserved. MIT license.
 import denoJson from "./deno.json" with { type: "json" };
 import enoguDenoJson from "./src/deno.json" with { type: "json" };
 import { createMinifier } from "@david/dts-minify";
@@ -20,7 +19,7 @@ const packageJson = {
   name: "enogu",
   version: enoguDenoJson.version,
   description: "Painting your terminal with colors",
-  license: "MIT",
+  license: "MIT-0",
   repository: "ryuapp/enogu",
   type: "module",
   exports: "./mod.mjs",

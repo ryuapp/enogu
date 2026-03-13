@@ -1,4 +1,3 @@
-// Copyright 2023-2025 ryu. All rights reserved. MIT license.
 import * as colors from "@std/fmt/colors";
 import chalk from "chalk";
 import pico from "picocolors";
