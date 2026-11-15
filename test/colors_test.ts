@@ -213,12 +213,12 @@ test("setColorEnabled", () => {
 
 test("nested styles restore the outer style", () => {
   const cases = [
-    [c.red, c.blue, "\x1b[31ma\x1b[34mb\x1b[31mc\x1b[39m"],
-    [c.bgRed, c.bgBlue, "\x1b[41ma\x1b[44mb\x1b[41mc\x1b[49m"],
-    [c.bold, c.dim, "\x1b[1ma\x1b[2mb\x1b[22m\x1b[1mc\x1b[22m"],
-    [c.dim, c.bold, "\x1b[2ma\x1b[1mb\x1b[22m\x1b[2mc\x1b[22m"],
-    [c.red, c.red, "\x1b[31ma\x1b[31mb\x1b[31mc\x1b[39m"],
-    [c.underline, c.underline, "\x1b[4ma\x1b[4mb\x1b[4mc\x1b[24m"],
+    [c.red, c.blue, "[31ma[34mb[31mc[39m"],
+    [c.bgRed, c.bgBlue, "[41ma[44mb[41mc[49m"],
+    [c.bold, c.dim, "[1ma[2mb[22m[1mc[22m"],
+    [c.dim, c.bold, "[2ma[1mb[22m[2mc[22m"],
+    [c.red, c.red, "[31ma[31mb[31mc[39m"],
+    [c.underline, c.underline, "[4ma[4mb[4mc[24m"],
   ] as const;
 
   for (const [outer, inner, expected] of cases) {
@@ -227,18 +227,18 @@ test("nested styles restore the outer style", () => {
 
   assertEquals(
     c.red("a" + c.blue("b") + "c" + c.green("d") + "e"),
-    "\x1b[31ma\x1b[34mb\x1b[31mc\x1b[32md\x1b[31me\x1b[39m",
+    "[31ma[34mb[31mc[32md[31me[39m",
   );
   assertEquals(
     c.red("a" + c.blue("b" + c.green("c") + "d") + "e"),
-    "\x1b[31ma\x1b[34mb\x1b[32mc\x1b[34md\x1b[31me\x1b[39m",
+    "[31ma[34mb[32mc[34md[31me[39m",
   );
 });
 
 test("unrelated styles keep their closing sequences", () => {
   assertEquals(
     c.red("a" + c.bold("b") + "c"),
-    "\x1b[31ma\x1b[1mb\x1b[22mc\x1b[39m",
+    "[31ma[1mb[22mc[39m",
   );
 });
 
@@ -248,7 +248,7 @@ test("setColorEnabled controls nested styles", () => {
     c.setColorEnabled(false);
     assertEquals(c.red("a" + c.blue("b") + "c"), "abc");
     c.setColorEnabled(true);
-    assertEquals(c.red(""), "\x1b[31m\x1b[39m");
+    assertEquals(c.red(""), "[31m[39m");
   } finally {
     c.setColorEnabled(enabled);
   }
@@ -256,27 +256,27 @@ test("setColorEnabled controls nested styles", () => {
 
 test("closing codes at string boundaries are restored", () => {
   assertEquals(
-    c.red("\x1b[39ma"),
-    "\x1b[31m\x1b[31ma\x1b[39m",
+    c.red("[39ma"),
+    "[31m[31ma[39m",
   );
   assertEquals(
-    c.red("a\x1b[39m"),
-    "\x1b[31ma\x1b[31m\x1b[39m",
+    c.red("a[39m"),
+    "[31ma[31m[39m",
   );
   assertEquals(
-    c.red("\x1b[39m\x1b[39m"),
-    "\x1b[31m\x1b[31m\x1b[31m\x1b[39m",
+    c.red("[39m[39m"),
+    "[31m[31m[31m[39m",
   );
   assertEquals(
-    c.bold("\x1b[22ma\x1b[22m"),
-    "\x1b[1m\x1b[22m\x1b[1ma\x1b[22m\x1b[1m\x1b[22m",
+    c.bold("[22ma[22m"),
+    "[1m[22m[1ma[22m[1m[22m",
   );
 });
 
 test("reset sequences remain unchanged inside styles", () => {
   assertEquals(
     c.red("a" + c.reset("b") + "c"),
-    "\x1b[31ma\x1b[0mb\x1b[0mc\x1b[39m",
+    "[31ma[0mb[0mc[39m",
   );
 });
 
@@ -303,7 +303,7 @@ for (const [env, enabled] of colorEnvironments) {
   test(`color environment matches Deno.noColor ${JSON.stringify(env)}`, async () => {
     const colors = await loadNodeColors(env);
     assertEquals(colors.getColorEnabled(), enabled);
-    assertEquals(colors.red("a"), enabled ? "\x1b[31ma\x1b[39m" : "a");
+    assertEquals(colors.red("a"), enabled ? "[31ma[39m" : "a");
     colors.setColorEnabled(false);
     assertEquals(colors.red("a"), "a");
     colors.setColorEnabled(true);
