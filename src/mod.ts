@@ -12,15 +12,10 @@
 
 // deno-lint-ignore no-explicit-any
 const { Deno, process } = globalThis as any;
+// Match Deno.noColor: a non-empty FORCE_COLOR overrides NO_COLOR.
 const noColor = typeof Deno?.noColor === "boolean"
   ? Deno.noColor as boolean
-  : typeof process !== "undefined"
-  ? ("FORCE_COLOR" in process?.env)
-    ? false
-    : ("NO_COLOR" in process?.env)
-    ? true
-    : false
-  : false;
+  : Boolean(process?.env?.NO_COLOR) && !process?.env?.FORCE_COLOR;
 
 let enabled = !noColor;
 
