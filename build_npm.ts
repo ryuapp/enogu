@@ -42,7 +42,7 @@ await Deno.bundle({
   entrypoints: entryPoints,
   format: "esm",
   minify: true,
-  outputDir: outDir,
+  outputPath: `${outDir}/mod.mjs`,
 });
 
 // generate d.ts
