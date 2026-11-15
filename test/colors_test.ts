@@ -1,5 +1,6 @@
 import { assertEquals } from "@std/assert";
 import * as c from "@ryu/enogu";
+import { loadNodeColors } from "./utils.ts";
 
 const { test } = Deno;
 
@@ -278,3 +279,34 @@ test("reset sequences remain unchanged inside styles", () => {
     "\x1b[31ma\x1b[0mb\x1b[0mc\x1b[39m",
   );
 });
+
+const colorEnvironments: [Record<string, string>, boolean][] = [
+  [{}, true],
+  [{ NO_COLOR: "" }, true],
+  [{ NO_COLOR: "0" }, false],
+  [{ NO_COLOR: "1" }, false],
+  [{ NO_COLOR: "false" }, false],
+  [{ FORCE_COLOR: "" }, true],
+  [{ FORCE_COLOR: "0" }, true],
+  [{ FORCE_COLOR: "1" }, true],
+  [{ FORCE_COLOR: "2" }, true],
+  [{ FORCE_COLOR: "3" }, true],
+  [{ FORCE_COLOR: "false" }, true],
+  [{ NO_COLOR: "", FORCE_COLOR: "0" }, true],
+  [{ NO_COLOR: "1", FORCE_COLOR: "0" }, true],
+  [{ NO_COLOR: "1", FORCE_COLOR: "" }, false],
+  [{ NO_COLOR: "1", FORCE_COLOR: "1" }, true],
+  [{ NO_COLOR: "1", FORCE_COLOR: "false" }, true],
+];
+
+for (const [env, enabled] of colorEnvironments) {
+  test(`color environment matches Deno.noColor ${JSON.stringify(env)}`, async () => {
+    const colors = await loadNodeColors(env);
+    assertEquals(colors.getColorEnabled(), enabled);
+    assertEquals(colors.red("a"), enabled ? "\x1b[31ma\x1b[39m" : "a");
+    colors.setColorEnabled(false);
+    assertEquals(colors.red("a"), "a");
+    colors.setColorEnabled(true);
+    assertEquals(colors.getColorEnabled(), enabled);
+  });
+}
